@@ -6,8 +6,6 @@
 # version 1.0
 #**************************************************************/
 from prometheus_client import start_http_server, Summary, Info, Gauge, Counter
-from influxdb import InfluxDBClient
-#from influxdb_client import InfluxDBClient
 import datetime
 import time
 from get_modem_status import *
