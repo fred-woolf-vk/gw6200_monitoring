@@ -17,7 +17,7 @@
   "gnetId": 405,
   "graphTooltip": 0,
   "id": 4,
-  "iteration": 1621607081747,
+  "iteration": 1622071798195,
   "links": [
     {
       "asDropdown": true,
@@ -1814,7 +1814,7 @@
         "allFormat": "glob",
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "localhost:9100"
           ],
@@ -1846,8 +1846,8 @@
       {
         "current": {
           "selected": false,
-          "text": "Prometheus-1",
-          "value": "Prometheus-1"
+          "text": "Prometheus-2",
+          "value": "Prometheus-2"
         },
         "error": null,
         "hide": 0,
@@ -1866,7 +1866,7 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -1898,5 +1898,5 @@
   "timezone": "browser",
   "title": "Gateworks 6200 Node Exporter Server Metrics-test-gw-board3",
   "uid": "XrYbebYMz",
-  "version": 9
+  "version": 10
 }

@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 2,
-  "iteration": 1621608058900,
+  "iteration": 1622060519113,
   "links": [
     {
       "asDropdown": true,
@@ -157,7 +157,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$Prometheus_DB_source",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -198,7 +198,7 @@
             "lastNotNull"
           ],
           "fields": "/^interface$/",
-          "values": false
+          "values": true
         },
         "textMode": "value_and_name"
       },
@@ -209,7 +209,7 @@
           "format": "table",
           "instant": true,
           "interval": "",
-          "legendFormat": "{{ip_addr}}",
+          "legendFormat": "{{interface}}",
           "refId": "A"
         }
       ],
@@ -2562,9 +2562,9 @@
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "default",
-          "value": "default"
+          "selected": true,
+          "text": "Prometheus-2",
+          "value": "Prometheus-2"
         },
         "error": null,
         "hide": 0,
@@ -2583,9 +2583,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "gw6200_modem_remote_server_ip_info{instance=\"localhost:8082\",job=\"gw6200\",remote_server=\"8.8.8.8\"}",
-          "value": "gw6200_modem_remote_server_ip_info{instance=\"localhost:8082\",job=\"gw6200\",remote_server=\"8.8.8.8\"}"
+          "text": "None",
+          "value": ""
         },
         "datasource": "$Prometheus_DB_source",
         "definition": "gw6200_modem_remote_server_ip_info",
@@ -2617,5 +2618,5 @@
   "timezone": "",
   "title": "gw-modem-stats_test_Board1.2",
   "uid": "p3-0qbYMz",
-  "version": 22
+  "version": 24
 }
