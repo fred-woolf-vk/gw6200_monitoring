@@ -11,7 +11,6 @@ import time
 from get_modem_status import *
 import sys
 import socket
-import pytz
 import pdb 
 
 # use current IP for database query
@@ -97,8 +96,9 @@ get_config_params()
 while(1):
 		# 'list_all_stats' is a list which contains Modem 0 and Modem 1 data; each dataset is a dictionary with a key:value pair for
 		# each element extracted from the mmcli commands in get_modem_status.py
+
 		list_all_stats = get_modem_stats()
-		#print("\n", list_all_stats, "\n")
+		print("\n", list_all_stats, "\n")
 		for i in range(len(list_all_stats)):
 			current_interface = 'wwan0'
 			current_modem = 'Modem 0'
@@ -155,13 +155,12 @@ while(1):
 
 			#list_all_stats[i]['ipaddr'] = ''
 
-			# json_body is the data sent to the influx db; list_all_stats[i] is Modem 0,				pdb.set_trace()
+			# json_body is the data sent to the influx db; list_all_stats[i] is Modem 0,
 			#  list_all_stats[1] is Modem 1
 			this_interface_name = "ping_time_avg_" +  list_all_stats[i]["interface"]
 
 			try:
 				i_remote_server_ip.info({'remote_server':remote_server_ip_address})
-
 				if i == 0:  # modem 1
 					g_signal_strength1.set(int(list_all_stats[i]['current_signal_strength'][:2]))
 					g_duration1.set(float(duration_min0)) # up time in minutes
@@ -170,6 +169,7 @@ while(1):
 					s_total_bytes_tx1.observe(list_all_stats[i]['total_bytesTx'])
 					s_total_bytes_rx1.observe(list_all_stats[i]['total_bytesRx'])
 					i_modem_info1.info({'ip_addr':list_all_stats[i]['ipaddr'], "modem":"Modem 1", "interface":"wan0"})
+
 					g_percent_uptime1.set(float(calculate_percentage_uptime(current_modem,
 												list_all_stats[i]['connected'], list_all_stats[i]['locked_status'])))
 					g_duration1.set(duration_min0)

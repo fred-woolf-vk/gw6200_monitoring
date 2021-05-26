@@ -117,11 +117,20 @@ def get_modem_stats():
                         print(" Error in reading bearer data")
                         continue
 
-                    #print(" bearer data: ", list_bearer_data)
-                    Status_section_index = [[ind, x] for ind, x in enumerate(list_bearer_data) if "Status" in x][0][0]
-                    IPv4_section_index = [[ind, x] for ind, x in enumerate(list_bearer_data) if "IPv4 configuration" in x][0][0]
-                    IPv6_section_index = [[ind, x] for ind, x in enumerate(list_bearer_data) if "IPv6 configuration" in x][0][0]
-                    Statistics_section_index = [[ind, x] for ind, x in enumerate(list_bearer_data) if "Statistics" in x][0][0]
+                    print(" bearer data: ", list_bearer_data)
+                    Status_section_index = 0
+                    IPv4_section_index = 0
+                    IPv6_section_index = 0
+                    Statistics_section_index = 0
+
+                    if len([x for x in list_bearer_data if "Status" in x]) > 0:
+                        Status_section_index = [[ind, x] for ind, x in enumerate(list_bearer_data) if "Status" in x][0][0]
+                    if len([x for x in list_bearer_data if "IPv4" in x]) > 0:
+                        IPv4_section_index = [[ind, x] for ind, x in enumerate(list_bearer_data) if "IPv4" in x][0][0]
+                    if len([x for x in list_bearer_data if "IPv6" in x]) > 0:
+                        IPv6_section_index = [[ind, x] for ind, x in enumerate(list_bearer_data) if "IPv6" in x][0][0]
+                    if len([x for x in list_bearer_data if "Statistics" in x]) > 0:
+                        Statistics_section_index = [[ind, x] for ind, x in enumerate(list_bearer_data) if "Statistics" in x][0][0]
 
                     # extract parameters from the Status section
                     list_bearer_Status_section = list_bearer_data[Status_section_index:IPv4_section_index]
@@ -132,7 +141,6 @@ def get_modem_stats():
 
                     # since elements and sections can be missing from the output, search for each
                     # parameter in each line of the section
-
                     for j in range(len(list_bearer_Status_section)):
                         if list_bearer_Status_section[j].lower().find("connected") != -1:
                             try:
@@ -166,6 +174,9 @@ def get_modem_stats():
                     gateway = ""
                     dns1 = ""
                     dns2 = ""
+
+                    if IPv6_section_index == 0:
+                        IPv6_section_index = len(list_bearer_data)
                     list_bearer_IPv4_section = list_bearer_data[IPv4_section_index:IPv6_section_index]
                     for j in range(len(list_bearer_IPv4_section)):
                         #print("j: ", j, list_bearer_IPv4_section[j])
