@@ -1,5 +1,5 @@
 #*************************************************************/
-# collect_db_stats.py
+# collect_db_stats_prometheus.py
 # Author: Fred Woolf
 # Date:   Jan 18, 2021
 # Copyright Vertical Knowledge, Inc.
