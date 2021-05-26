@@ -28,6 +28,7 @@ wget https://raw.githubusercontent.com/fred-woolf-vk/gw6200_monitoring/master/gw
 wget https://raw.githubusercontent.com/fred-woolf-vk/gw6200_monitoring/master/update_monitoring_scripts_from_repo.sh 
 echo "--------------------------------------------------------------------------------"
 
+chmod 755 gw6200_monitoring_script.sh
 chmod 755 collect_db_stats_prometheus.py
 chmod 755 get_modem_status.py
 mv prometheus.yml /etc/prometheus/
